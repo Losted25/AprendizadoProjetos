@@ -6,13 +6,15 @@ public class PessoaFisica extends Cliente{
 		double valorFinal = getSalario()- getDivida();
 		String valorFormatado = String.format("%.2f", valorFinal);
 		
-		if(salario>=0) {
+		if(salario>=0&&divida>0) {
 			System.out.println("Sua dívida é de R$ " +getDivida());
 			System.out.print("Sua dívida foi paga. Seu saldo atual é de R$ " + valorFormatado);
-		}else {
+		}else if(salario<0){
 			System.out.println("Sua dívida é de R$ " +getDivida());
 			System.out.println("Não é possível pagar sua dívida por causa que seu saldo está negativo.\n"
 					+ "Entre em contato com sua agência e regularize suas pendências.");
+		}else {
+			System.out.println("\nVocê não possui dívidas.");
 		}
 	}
 	public void transferirConta() {
@@ -20,14 +22,15 @@ public class PessoaFisica extends Cliente{
 	}
 	@Override
 	public void sacar() {
-		if(salario>0) {
-			System.out.println("---------------------------------------------------------------------------");
-			System.out.println("O valor do saque é de R$ " +getSaque());
+		if(salario>0&&saque>0) {
+			System.out.println("\nO valor do saque é de R$ " +getSaque());
 			System.out.print("Saque realizado. Seu saldo atual é de R$ " + (getSalario()-getSaque()));
+		}else if(salario>0&&saque<0){
+			System.out.println("Não é possívle realizar o saque, pois seu saldo é de R$ " + getSalario());
 		}else {
-			System.out.println("---------------------------------------------------------------------------");
-			System.out.println("Não é possívle realziar o saque, pois seu saldo é de R$ " + getSalario());
-				}
+			System.out.println("Não é possívle realizar o saque, pois você não especificou o valor "
+					+ "que deseja sacar.");
+		}
 	}
 
 	@Override
@@ -40,10 +43,8 @@ public class PessoaFisica extends Cliente{
 	@Override
 	public void solicitarEmprestimo() {
 		if(salario <= 0) {
-			System.out.println("\n---------------------------------------------------------------------------");
 			System.out.println("É possível parcelar sua divída em 4x , com juros de 9%");
 		}else{
-			System.out.println("\n---------------------------------------------------------------------------");
 			System.out.println("Não há necessidade de empréstimo." 
 		+ "\nMas caso deseje, entre em contato com seu gerente ou visite sua agência.");
 		}
