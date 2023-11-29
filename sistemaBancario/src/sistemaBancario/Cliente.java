@@ -2,7 +2,7 @@ package sistemaBancario;
 
 public abstract class Cliente {
 	protected String nome, cpf, tipo;
-	protected float salario, divida, deposito, saque;
+	protected float salario,saldo, divida, deposito, saque;
 	protected boolean trabalhando;
 	
 	public abstract void sacar();
@@ -16,6 +16,12 @@ public abstract class Cliente {
 		this.nome = nome;
 	}
 	
+	public float getSaldo() {
+		return saldo;
+	}
+	public void setSaldo(float saldo) {
+		this.saldo = saldo;
+	}
 	public float getSaque() {
 		return saque;
 	}

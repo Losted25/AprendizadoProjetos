@@ -1,6 +1,7 @@
 package sistemaBancario;
 
-public class PessoaFisica  extends Cliente{
+public class PessoaFisica extends Cliente{
+
 	public void pagarContas() {
 		double valorFinal = getSalario()- getDivida();
 		String valorFormatado = String.format("%.2f", valorFinal);
@@ -47,4 +48,11 @@ public class PessoaFisica  extends Cliente{
 		+ "\nMas caso deseje, entre em contato com seu gerente ou visite sua agência.");
 		}
 	}
+	@Override
+	public String toString() {
+		return "Dados \n1- nome = " + nome + "\n2 - cpf = " + cpf + "\n3- salario = R$ " + salario 
+				+ "\n4- saldo atual = R$ " + saldo + "\n5- divida = R$ " + divida + "\n6- deposito = R$" 
+				+ deposito + "\n7- saque = R$" + saque;
+	}
+	
 }
